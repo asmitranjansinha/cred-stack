@@ -18,6 +18,14 @@ class StackController extends ChangeNotifier {
     notifyListeners();
   }
 
+  double _sliderInitialValue = 150000.0;
+  double get sliderInitialValue => _sliderInitialValue;
+
+  void setSliderValue(double value) {
+    _sliderInitialValue = value;
+    notifyListeners();
+  }
+
   List<StackItemModel> _stackItems = [];
   List<StackItemModel> get stackItems => _stackItems;
 

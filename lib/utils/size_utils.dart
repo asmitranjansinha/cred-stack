@@ -21,10 +21,10 @@ class SizeUtils {
 
 extension SizeExtensions on num {
   /// Returns a SizedBox with height as a percentage of screen height.
-  Widget get heightBox => SizedBox(height: this.toDouble());
+  Widget get heightBox => SizedBox(height: toDouble());
 
   /// Returns a SizedBox with width as a percentage of screen width.
-  Widget get widthBox => SizedBox(width: this.toDouble());
+  Widget get widthBox => SizedBox(width: toDouble());
 
   /// Returns scaled height based on the screen size.
   double scaledHeight(BuildContext context) {
