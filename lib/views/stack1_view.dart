@@ -1,5 +1,6 @@
 import 'package:cred_assignment/controllers/stack_controller.dart';
 import 'package:cred_assignment/utils/size_utils.dart';
+import 'package:cred_assignment/views/stack2_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/cupertino.dart';
@@ -24,34 +25,56 @@ class Stack1View extends StatelessWidget {
             ),
           );
         } else {
-          return Scaffold(
-            backgroundColor: const Color.fromARGB(255, 6, 17, 24),
-            body: Padding(
-              padding: EdgeInsets.only(top: sizeUtils.heightPercentage(5)),
-              child: Column(
-                children: [
-                  header(sizeUtils),
-                  25.heightBox,
-                  body(sizeUtils, controller),
-                ],
-              ),
-            ),
-            bottomSheet: Container(
-              height: sizeUtils.heightPercentage(9),
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 20, 68, 151),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(sizeUtils.widthPercentage(6)),
-                  topRight: Radius.circular(sizeUtils.widthPercentage(6)),
+          return WillPopScope(
+            onWillPop: () async {
+              if (controller.isStack2Opened) {
+                Navigator.pop(context);
+                controller.toggleStack2Open(false);
+                return false;
+              }
+              return true;
+            },
+            child: Scaffold(
+              backgroundColor: const Color.fromARGB(255, 6, 17, 24),
+              body: Padding(
+                padding: EdgeInsets.only(top: sizeUtils.heightPercentage(5)),
+                child: Column(
+                  children: [
+                    header(sizeUtils),
+                    25.heightBox,
+                    body(sizeUtils, controller),
+                  ],
                 ),
               ),
-              alignment: Alignment.center,
-              child: Text(
-                controller.stackItems[0].ctaText ?? "",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: sizeUtils.widthPercentage(3.7),
-                  fontWeight: FontWeight.bold,
+              bottomSheet: InkWell(
+                onTap: () {
+                  controller.toggleStack2Open(true);
+                  showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    builder: (ctx) => Stack2View(),
+                  ).whenComplete(() {
+                    controller.toggleStack2Open(false);
+                  });
+                },
+                child: Container(
+                  height: sizeUtils.heightPercentage(9),
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 20, 68, 151),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(sizeUtils.widthPercentage(6)),
+                      topRight: Radius.circular(sizeUtils.widthPercentage(6)),
+                    ),
+                  ),
+                  alignment: Alignment.center,
+                  child: Text(
+                    controller.stackItems[0].ctaText ?? "",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: sizeUtils.widthPercentage(3.7),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -135,23 +158,63 @@ class Stack1View extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            stackItem.openState?.body?.title ?? "",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: sizeUtils.widthPercentage(4.4),
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          6.heightBox,
-          Text(
-            stackItem.openState?.body?.subtitle ?? "",
-            style: TextStyle(
-              color: Colors.grey,
-              fontSize: sizeUtils.widthPercentage(3),
-              fontWeight: FontWeight.w600,
-            ),
-          ),
+          controller.isStack2Opened
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          stackItem.closedState?.body?['key1'] ?? "",
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: sizeUtils.widthPercentage(3),
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        6.heightBox,
+                        Text(
+                          "₹${controller.sliderInitialValue.round()}",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: sizeUtils.widthPercentage(6),
+                            fontWeight: FontWeight.w600,
+                            decoration: TextDecoration.underline,
+                            decorationStyle: TextDecorationStyle.dotted,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Icon(
+                      CupertinoIcons.chevron_down,
+                      color: Colors.grey.shade400,
+                      size: sizeUtils.widthPercentage(5),
+                    )
+                  ],
+                )
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      stackItem.openState?.body?.title ?? "",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: sizeUtils.widthPercentage(4.4),
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    6.heightBox,
+                    Text(
+                      stackItem.openState?.body?.subtitle ?? "",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: sizeUtils.widthPercentage(3),
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
           22.heightBox,
           Container(
             height: sizeUtils.heightPercentage(50),
@@ -178,9 +241,9 @@ class Stack1View extends StatelessWidget {
                     angleRange: 360,
                     startAngle: 270,
                     customWidths: CustomSliderWidths(
-                      handlerSize: sizeUtils.widthPercentage(3.5),
-                      trackWidth: sizeUtils.widthPercentage(4),
-                      progressBarWidth: sizeUtils.widthPercentage(4),
+                      handlerSize: sizeUtils.widthPercentage(4),
+                      trackWidth: sizeUtils.widthPercentage(3.5),
+                      progressBarWidth: sizeUtils.widthPercentage(3.5),
                     ),
                     customColors: CustomSliderColors(
                       trackColor: const Color.fromARGB(255, 240, 218, 201),

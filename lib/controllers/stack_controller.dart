@@ -34,6 +34,30 @@ class StackController extends ChangeNotifier {
     notifyListeners();
   }
 
+  bool _isStack2Opened = false;
+  bool get isStack2Opened => _isStack2Opened;
+
+  void toggleStack2Open(bool value) {
+    _isStack2Opened = value;
+    notifyListeners();
+  }
+
+  bool _isStack3Opened = false;
+  bool get isStack3Opened => _isStack3Opened;
+
+  void toggleStack3Open(bool value) {
+    _isStack3Opened = value;
+    notifyListeners();
+  }
+
+  int _selectedPlan = 0;
+  int get selectedPlan => _selectedPlan;
+
+  void setSelectedPlan(int value) {
+    _selectedPlan = value;
+    notifyListeners();
+  }
+
   Future<void> fetchStackData() async {
     isLoading = true;
     Fluttertoast.showToast(
