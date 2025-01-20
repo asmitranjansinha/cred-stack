@@ -1,6 +1,7 @@
 import 'package:cred_assignment/models/stack_item_model.dart';
 import 'package:cred_assignment/services/api_service.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class StackController extends ChangeNotifier {
   final ApiService _apiService;
@@ -27,6 +28,11 @@ class StackController extends ChangeNotifier {
 
   Future<void> fetchStackData() async {
     isLoading = true;
+    Fluttertoast.showToast(
+      msg: "The app is loading",
+      backgroundColor: Colors.deepPurple,
+      timeInSecForIosWeb: 2,
+    );
     try {
       final response = await _apiService.fetchStackData();
       stackItems = response;
