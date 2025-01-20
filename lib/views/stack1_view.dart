@@ -2,7 +2,6 @@ import 'package:cred_assignment/controllers/stack_controller.dart';
 import 'package:cred_assignment/utils/size_utils.dart';
 import 'package:cred_assignment/views/stack2_view.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:lottie/lottie.dart';
