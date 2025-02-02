@@ -36,15 +36,15 @@ lib
 
 ### Stack 1
 
-![Stack 1](assets/screenshots/Screenshot2025-02-02at09.52.09.png)
+<img src="assets/screenshots/Screenshot2025-02-02at09.52.09.png" width="300" height="500">
 
 ### Stack 2
 
-![Stack 2](assets/screenshots/Screenshot2025-02-02at09.52.37.png)
+<img src="assets/screenshots/Screenshot2025-02-02at09.52.37.png" width="300" height="500">
 
 ### Stack 3
 
-![Stack 2](assets/screenshots/Screenshot2025-02-02at09.52.53.png)
+<img src="assets/screenshots/Screenshot2025-02-02at09.52.53.png" width="300" height="500">
 
 ## 📲 APK Download
 
