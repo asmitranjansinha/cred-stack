@@ -30,7 +30,7 @@ lib
 ## 📸 Screenshots and Recordings
 
 <video width="320" height="240" controls>
-  <source src="assets/screenRecording/app-screen-recording.mov" type="video/mp4">
+  <source src="https://github.com/asmitranjansinha/cred/blob/main/assets/screenRecording/app-screen-recording.mov" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
