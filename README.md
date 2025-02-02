@@ -34,6 +34,18 @@ lib
   Your browser does not support the video tag.
 </video>
 
+### Stack 1
+
+![Stack 1](assets/screenshots/Screenshot2025-02-02at09.52.09.png)
+
+### Stack 2
+
+![Stack 2](assets/screenshots/Screenshot2025-02-02at09.52.37.png)
+
+### Stack 3
+
+![Stack 2](assets/screenshots/Screenshot2025-02-02at09.52.53.png)
+
 ## 📲 APK Download
 
 You can download the APK file for the app from the following location:
