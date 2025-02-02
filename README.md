@@ -29,7 +29,10 @@ lib
 
 ## 📸 Screenshots and Recordings
 
-You can view the video recording here: [Video Recording](https://github.com/asmitranjansinha/cred-stack/blob/main/assets/screenRecording/app-screen-recording.mp4)
+<video width="320" height="240" controls>
+  <source src="assets/screenRecording/app-screen-recording.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ## 📲 APK Download
 
